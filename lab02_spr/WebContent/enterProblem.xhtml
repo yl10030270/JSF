@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+	<h:head>
+		<title>#{msg.name}</title>
+	</h:head> 
+	<h:body> 
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg.name}"></h:outputLabel>
+				<h:panelGroup>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="#{msg.number}"></h:outputLabel>					
+						<h:inputText value = "#{problemReport.number}"></h:inputText>
+						<h:outputLabel value="#{msg.doi}"></h:outputLabel>					
+						<h:inputText value = "#{problemReport.doi}"></h:inputText>
+					</h:panelGrid>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.project}"></h:outputLabel>
+					<h:inputText value = "#{problemReport.project.name}"></h:inputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.originator}"></h:outputLabel>
+					<h:inputText value = "#{problemReport.originator}"></h:inputText>
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg.title}"></h:outputLabel>
+				<h:inputText value = "#{problemReport.project.title}" style=" width : 539px;"></h:inputText>
+				<h:outputLabel value="#{msg.modAffected}"></h:outputLabel>
+				<h:inputText value = "#{problemReport.modAffected}" style=" width : 539px;"></h:inputText>
+			</h:panelGrid>
+			<p>
+				<h:outputLabel value="#{msg.description}"></h:outputLabel>			
+			</p>
+			<p>
+			<h:inputTextarea value="#{problemReport.description}" style=" width : 740px; height : 100px;"></h:inputTextarea>
+			</p>
+			<p>
+				<h:selectBooleanCheckbox value="#{problemReport.inscope}" label="In Scope">In Scope</h:selectBooleanCheckbox>
+			</p>
+			<p>
+				<h:outputLabel value="#{msg.recSolution}"></h:outputLabel>				
+			</p>
+			<p>
+			<h:inputTextarea value="#{problemReport.recSolution}" style=" width : 740px; height : 100px;"></h:inputTextarea>
+			</p>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					#{msg.priority}
+					<h:selectOneMenu value = "#{problemReport.priority}">
+						<f:selectItems value="#{data.priorities}"/>
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.severity}
+					<h:inputText value = "#{problemReport.severity}" style=" width : 95px;"></h:inputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.dateAssigned}
+					<h:inputText value = "#{problemReport.dateAssigned}" style=" width : 166px;"></h:inputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.dateFixed}
+					<h:inputText value = "#{problemReport.dateFixed}" style=" width : 128px;"></h:inputText>
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:commandButton value = "#{msg.btnSubmit}" action="#{problemReport.submit}" ></h:commandButton>
+		</h:form>
+	</h:body> 
+</html>

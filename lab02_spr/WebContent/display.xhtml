@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	<h:head>
+		<title>#{msg.name}</title>
+	</h:head> 
+	<h:body> 
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg.name}"></h:outputLabel>
+				<h:panelGroup>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="#{msg.number}"></h:outputLabel>					
+						<h:outputText value = "#{problemReport.number}"></h:outputText>
+						<h:outputLabel value="#{msg.doi}"></h:outputLabel>					
+						<h:outputText value = "#{problemReport.doi}"></h:outputText>				
+						<h:inputHidden value = "#{problemReport.number}"></h:inputHidden>				
+						<h:inputHidden value = "#{problemReport.doi}"></h:inputHidden>
+					</h:panelGrid>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.project}"></h:outputLabel>
+					<h:outputText value = "#{problemReport.project.name}" ></h:outputText>
+					<h:inputHidden value = "#{problemReport.project.name}"></h:inputHidden>					
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.originator}"></h:outputLabel>
+					<h:outputText value = "#{problemReport.originator}" ></h:outputText>
+					<h:inputHidden value = "#{problemReport.originator}" ></h:inputHidden>
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg.title}"></h:outputLabel>
+				<h:outputText value = "#{problemReport.project.title}" style=" width : 539px;"></h:outputText>
+				<h:outputLabel value="#{msg.modAffected}"></h:outputLabel>
+				<h:outputText value = "#{problemReport.modAffected}"  style=" width : 539px;"></h:outputText>
+				<h:inputHidden value = "#{problemReport.project.title}" ></h:inputHidden>
+				<h:inputHidden value = "#{problemReport.modAffected}"></h:inputHidden>
+				
+			</h:panelGrid>
+			<p>
+				<h:outputLabel value="#{msg.description}"></h:outputLabel>			
+			</p>
+			<p>
+			<h:outputText  value="Engineer Change Request" style=" width : 740px; height : 100px;" rendered= "#{!problemReport.inscope}"></h:outputText>
+			<h:outputText  value="#{problemReport.description}" style=" width : 740px; height : 100px;" rendered= "#{problemReport.inscope}"></h:outputText>
+			<h:inputHidden value="#{problemReport.description}" ></h:inputHidden>
+			<h:inputHidden value="#{problemReport.inscope}" ></h:inputHidden>
+			</p>
+			<p>
+				<h:outputLabel value="#{msg.recSolution}"></h:outputLabel>				
+			</p>
+			<p>
+			<h:inputHidden value="#{problemReport.recSolution}" ></h:inputHidden>
+			<h:outputText value="#{problemReport.recSolution}" style=" width : 740px; height : 100px;"></h:outputText>
+			</p>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					#{msg.priority}
+					<h:inputHidden value = "#{problemReport.priority}"  ></h:inputHidden>
+					<h:outputText value = "#{problemReport.priority}"  style=" width : 95px;"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.severity}
+					<h:inputHidden value = "#{problemReport.severity}"  ></h:inputHidden>
+					<h:outputText value = "#{problemReport.severity}"  style=" width : 95px;"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.dateAssigned}
+					<h:inputHidden value = "#{problemReport.dateAssigned}" ></h:inputHidden>
+					<h:outputText value = "#{problemReport.dateAssigned}"  style=" width : 166px;"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					#{msg.dateFixed}
+					<h:inputHidden value = "#{problemReport.dateFixed}"  style=" width : 128px;"></h:inputHidden>
+					<h:outputText value = "#{problemReport.dateFixed}"  style=" width : 128px;"></h:outputText>
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			<h:commandButton value = "Edit" action="#{problemReport.back}"></h:commandButton>
+
+		</h:form>
+	</h:body> 
+</html>

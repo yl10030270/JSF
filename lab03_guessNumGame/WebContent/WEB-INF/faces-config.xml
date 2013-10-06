@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+   <navigation-rule>
+      <navigation-case>
+         <from-outcome>testcorrect</from-outcome>
+         <to-view-id>/correct.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+   <navigation-rule>
+      <navigation-case>
+         <from-outcome>testlow</from-outcome>
+         <to-view-id>/low.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+   <navigation-rule>
+      <navigation-case>
+         <from-outcome>testhigh</from-outcome>
+         <to-view-id>/high.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+
+</faces-config>

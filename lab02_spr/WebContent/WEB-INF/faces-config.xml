@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+	<navigation-rule>
+      <navigation-case>
+         <from-outcome>success</from-outcome>
+         <to-view-id>/display.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+   <navigation-rule>
+      <from-view-id>/display.xhtml</from-view-id>
+      <navigation-case>
+         <from-outcome>back</from-outcome>
+         <to-view-id>/enterProblem.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+	<application>
+      <locale-config>
+         <default-locale>en</default-locale>
+      </locale-config>
+      <resource-bundle>
+         <base-name>lab02_spr.messages</base-name>
+         <var>msg</var>
+      </resource-bundle>
+   </application>
+</faces-config>

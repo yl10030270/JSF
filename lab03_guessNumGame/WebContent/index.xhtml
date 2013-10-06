@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+	<h:head>
+		<title>Guess Number Game</title>
+	</h:head> 
+	<h:body> 
+		<h1>Guess Number Game</h1>
+		<p>
+			Please Guess a Number between #{game.lowerBound} to #{game.upperBound}
+		</p>		
+		<h:form>
+			<h:inputText value="#{game.answer}"></h:inputText>
+			<p>
+			<h:commandButton value="Guess" action="#{game.startGame}"></h:commandButton>
+			</p>
+		</h:form>
+	</h:body> 
+</html>
