@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/masterLayout.xhtml">
+	<ui:define name="windowTitle">
+            editCustomers
+         </ui:define>
+	<ui:define name="sidebarLeft">
+		<h:form>
+			<h:commandLink action="#{editCustomersController.endEditing}">List Customers</h:commandLink>
+		</h:form>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable value="#{customerTable.rows}" var="row">
+				<h:column>
+					<f:facet name="header">Customer ID</f:facet>
+					<h:outputText value="#{row.rowView.customerId}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">First Name</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.firstName}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.firstName}" style=" width : 70px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Last Name</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.lastName}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.lastName}" style=" width : 80px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Middle Name</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.middleName}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.middleName}" style=" width : 70px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Address 1</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.address1}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.address1}" style=" width : 150px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Address 2</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.address2}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.address2}" style=" width : 150px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">City</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.city}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.city}" style=" width : 130px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">State</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.state}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.state}" style=" width : 30px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ZIP Code</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.zipCode}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.zipCode}" style=" width : 60px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Phone</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.phone}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.phone}" style=" width : 150px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					<h:outputText rendered="#{row.state == 'unchanged'}"
+						value="#{row.rowView.email}"></h:outputText>
+					<h:inputText
+						rendered="#{row.state == 'modified' or row.state == 'added'}"
+						value="#{row.rowView.email}" style=" width : 150px;"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Edit" style="font-weight: bold" />
+					</f:facet>
+					<h:commandButton value="Edit"
+						rendered="#{row.state == 'unchanged'}"
+						action="#{editCustomersController.editRow(row)}"></h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<h:panelGrid columns="3">
+				<h:commandButton value="Add New"
+					action="#{editCustomersController.addNew}"></h:commandButton>
+				<h:commandButton value="Save"
+					action="#{editCustomersController.save}"></h:commandButton>
+				<h:commandButton value="Reset"
+					action="#{editCustomersController.reset}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

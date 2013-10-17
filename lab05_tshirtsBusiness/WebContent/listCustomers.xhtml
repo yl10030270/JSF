@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/template/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            listCustomers
+         </ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:dataTable value="#{data.customerTable}" var="customer">
+					<h:column>
+						<f:facet name="header">Customer ID</f:facet>
+               			#{customer.customerId}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">First Name</f:facet>
+               			#{customer.firstName}
+           			</h:column>
+					<h:column>
+						<f:facet name="header">Last Name</f:facet>
+       		        	#{customer.lastName}
+     		 	    </h:column>
+					<h:column>
+						<f:facet name="header">Middle Name</f:facet>
+        		    	#{customer.middleName}
+       			    </h:column>
+					<h:column>
+						<f:facet name="header">Address 1</f:facet>
+						#{customer.address1}
+       		     	</h:column>
+					<h:column>
+						<f:facet name="header">Address 2</f:facet>
+						#{customer.address2}
+           		 	</h:column>
+					<h:column>
+						<f:facet name="header">City</f:facet>
+						#{customer.city}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">State</f:facet>
+						#{customer.state}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">ZIP Code</f:facet>
+						#{customer.zipCode}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">Phone</f:facet>
+						#{customer.phone}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+						#{customer.email}
+            		</h:column>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
