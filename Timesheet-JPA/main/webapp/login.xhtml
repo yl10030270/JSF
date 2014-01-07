@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<meta http-equiv="refresh" content="15" />
+</h:head>
+
+<h:body>
+		<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            	Employee Login 
+        	</ui:define>
+		<ui:define name="content">
+			<h:form id="login">
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{msgs.username}"></h:outputLabel>
+					<h:inputText value="#{loginController.user.employName}"
+						required="true" id="username">
+					</h:inputText>
+					<h:message for="username" style="color:red;margin:8px;" />
+					<h:outputLabel value="#{msgs.password}"></h:outputLabel>
+					<h:inputSecret value="#{loginController.user.password}"
+						required="true" id="password" />
+					<h:message for="password" style="color:red;margin:8px;" />
+				</h:panelGrid>
+				<h:panelGrid columns="3">
+					<h:commandButton value="#{msgs.login}"
+						action="#{loginController.login}" />
+					<h:commandButton value="#{msgs.register}"
+						action="#{loginController.regist(false)}" />
+					<h:commandButton value="#{msgs.registerSuper}"
+						action="#{loginController.regist(true)}" />
+				</h:panelGrid>
+			</h:form>
+			<p></p>
+			<h:dataTable value="#{loginController.employs}" var="row">
+				<h:column>
+					<f:facet name="header">Employ ID</f:facet>
+               			#{row.employNumber}
+            		</h:column>
+				<h:column>
+					<f:facet name="header">Employ Name</f:facet>
+               			#{row.employName}
+           			</h:column>
+				<h:column>
+					<f:facet name="header">Password</f:facet>
+        		    	#{row.password}
+       			    </h:column>
+				<h:column>
+					<f:facet name="header">Admin User</f:facet>
+						#{row.superManager}
+       		     	</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+	<ui:debug />
+</h:body>
+
+</html>

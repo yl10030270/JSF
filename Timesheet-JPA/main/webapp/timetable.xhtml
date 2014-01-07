@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<ui:composition template="templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            Customer list
+         </ui:define>
+		<ui:define name="content">
+			<h:panelGrid columns="6">
+				<h:outputText value="E Number"></h:outputText>
+				<h:outputText
+					value="#{timetableController.editingEmploy.employNumber}"></h:outputText>
+				<h:outputText value="Week Number"></h:outputText>
+				<h:outputText value="#{timetableController.ediTimesheet.weekNum}"></h:outputText>
+				<h:outputText value="Week Ending"></h:outputText>
+				<h:outputText
+					value="#{timetableController.ediTimesheet.timesheet.weekEnd}"></h:outputText>
+				<h:outputText value="Name"></h:outputText>
+				<h:outputText
+					value="#{timetableController.editingEmploy.employName}"></h:outputText>
+			</h:panelGrid>
+
+			<h:form id="timeentry">
+				<h:dataTable value="#{timetableController.records}" var="row">
+					<!-- timetable project -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.project}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.project}" style="width:70px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.project}" style="width:70px;"></h:inputText>
+					</h:column>
+					<!-- timetable wp -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.wp}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.wp}" style="width:70px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.wp}" style="width:70px;"></h:inputText>
+					</h:column>
+					<!-- total -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.total}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.total}" style="width:70px;" />
+					</h:column>
+					<!-- sat -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.sat}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.sat}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.sat}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Sun" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.sun}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.sun}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Mon" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.mon}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.mon}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Tue" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.tue}"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.tue}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Wed" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.wed}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.wed}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Thu" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.thu}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.thu}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Fri" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.fri}" style="width:35px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.fri}" style="width:35px;">
+							<f:validateDoubleRange minimum="0" maximum="24" />
+						</h:inputText>
+					</h:column>
+					<!-- up to friday -->
+					<!-- notes -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.notes}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText rendered="#{row.state == 'unchanged'}"
+							value="#{row.record.note}" style="width:70px;"></h:outputText>
+						<h:inputText
+							rendered="#{row.state == 'modified' or row.state == 'added'}"
+							value="#{row.record.note}" style="width:70px;"></h:inputText>
+					</h:column>
+					<h:column>
+						<h:commandButton value="Edit"
+							rendered="#{row.state == 'unchanged'}"
+							action="#{timetableController.editRow(row)}"></h:commandButton>
+					</h:column>
+					<h:column>
+						<h:commandButton value="Delete"
+							rendered="#{row.state != 'deleted'}"
+							action="#{timetableController.deleteRow(row)}"></h:commandButton>
+					</h:column>
+				</h:dataTable>
+				<h:dataTable value="#{timetableController.totalRow}" var="row">
+					<!-- timetable project -->
+					<h:column>
+						<h:outputText value="#{msgs.total}"
+							style="width:70px;font-weight:bold;"></h:outputText>
+					</h:column>
+					<!-- timetable wp -->
+					<h:column>
+						<h:outputText value="    " style="width:70px;"></h:outputText>
+					</h:column>
+					<!-- total -->
+					<h:column>
+						<h:outputText value="#{row.total}" style="width:35px;" />
+					</h:column>
+					<!-- sat -->
+					<h:column>
+						<h:outputText value="#{row.sat}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.sun}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.mon}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.tue}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.wed}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.thu}" style="width:35px;"></h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{row.fri}" style="width:35px;"></h:outputText>
+					</h:column>
+					<!-- up to friday -->
+					<!-- notes -->
+
+				</h:dataTable>
+
+				<h:messages style="color:red;margin:8px;" id="allerror" />
+				<h:panelGrid columns="4">
+					<h:commandButton value="#{msgs.new}"
+						action="#{timetableController.addNew}" />
+					<h:commandButton value="#{msgs.save}"
+						action="#{timetableController.save}" />
+					<h:commandButton value="#{msgs.reset}"
+						action="#{timetableController.reset}" />
+					<h:commandButton value="#{msgs.back}"
+						action="#{timetableController.back}" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	<ui:debug />
+
+</h:body>
+</html>

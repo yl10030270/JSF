@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{userBean.id}"/>
+		<f:event type="preRenderView" listener="#{userBean.retrieve}"/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View User"/>
+
+	<ui:define name="header">
+		User
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing User
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="userBeanUserLoginName" value="Login Name:"/>
+			<h:outputText id="userBeanUserLoginName" value="#{userBean.user.loginName}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserPassword" value="Password:"/>
+			<h:outputText id="userBeanUserPassword" value="#{userBean.user.password}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserFname" value="Fname:"/>
+			<h:outputText id="userBeanUserFname" value="#{userBean.user.fname}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserLname" value="Lname:"/>
+			<h:outputText id="userBeanUserLname" value="#{userBean.user.lname}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserStudentNumber" value="Student Number:"/>
+			<h:outputText id="userBeanUserStudentNumber" value="#{userBean.user.studentNumber}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserToken" value="Token:"/>
+			<h:outputText id="userBeanUserToken" value="#{userBean.user.token}"/>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserTimestamp" value="Timestamp:"/>
+			<h:outputText id="userBeanUserTimestamp" value="#{userBean.user.timestamp}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="userBeanUserQuizTakens" value="Quiz Takens:"/>
+			<h:dataTable id="userBeanUserQuizTakens" styleClass="data-table" value="#{forgeview:asList(userBean.user.quizTakens)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Score"/>
+					</f:facet>
+					<h:link outcome="/quizTaken/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemScore" value="#{_item.score}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<ui:composition template="templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            Customer list
+         </ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:dataTable value="#{indexController.timesheets}" var="row">
+
+					<!-- employee name -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.employeename}"
+								style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{row.timesheet.employ.employName}" size="10" />
+					</h:column>
+
+					<!-- week number -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.weeknumber}"
+								style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{row.weekNum}" size="4" />
+					</h:column>
+
+					<!-- Week ending -->
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.weekending}"
+								style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{row.timesheet.weekEnd}" size="10" />
+
+					</h:column>
+
+					<!-- edit buttons -->
+					<h:column>
+						<h:commandButton value="#{msgs.edit}"
+							rendered="#{row.timesheet.employ.employNumber == indexController.loginUser.employNumber}"
+							action="#{indexController.edit(row)}" />
+					</h:column>
+
+					<h:column>
+						<h:commandButton value="Delete"
+							action="#{indexController.delete(row)}" />
+					</h:column>
+
+				</h:dataTable>
+				<h:panelGrid columns="2">
+					<h:commandButton value="#{msgs.add}"
+						action="#{indexController.add}" />
+					<h:commandButton value="#{msgs.logout}"
+						action="#{indexController.logout}" />
+				</h:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+	<ui:debug />
+</h:body>
+</html>

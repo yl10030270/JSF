@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value="#{questionBean.page}"/>
+		<f:event type="preRenderView" listener="#{questionBean.paginate}"/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Question entities"/>
+
+	<ui:define name="header">
+		Question
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Question entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="questionBeanExampleQuiz" value="Quiz:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{quizBean.converter}" id="questionBeanExampleQuiz" value="#{questionBean.example.quiz}">
+								<f:selectItem/>
+								<f:selectItems value="#{quizBean.all}"/>
+							</h:selectOneMenu>
+							<h:message for="questionBeanExampleQuiz" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="questionBeanExampleQuestionText" value="Question Text:"/>
+						<h:panelGroup>
+							<h:inputText id="questionBeanExampleQuestionText" maxLength="225" value="#{questionBean.example.questionText}"/>
+							<h:message for="questionBeanExampleQuestionText" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="questionBeanExampleAnswer" value="Answer:"/>
+						<h:panelGroup>
+							<h:inputText id="questionBeanExampleAnswer" maxLength="225" value="#{questionBean.example.answer}"/>
+							<h:message for="questionBeanExampleAnswer" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action="#{questionBean.search}" styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action="#{questionBean.create}" styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="questionBeanPageItems" styleClass="data-table" value="#{questionBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question Text"/>
+					</f:facet>
+					<h:link outcome="/question/view">
+						<f:param name="id" value="#{_item.idQuestion}"/>
+						<h:outputText id="itemQuestionText" value="#{_item.questionText}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Answer"/>
+					</f:facet>
+					<h:link outcome="/question/view">
+						<f:param name="id" value="#{_item.idQuestion}"/>
+						<h:outputText id="itemAnswer" value="#{_item.answer}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value="#{questionBean}"/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

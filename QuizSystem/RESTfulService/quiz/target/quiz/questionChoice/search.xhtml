@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value="#{questionChoiceBean.page}"/>
+		<f:event type="preRenderView" listener="#{questionChoiceBean.paginate}"/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Question Choice entities"/>
+
+	<ui:define name="header">
+		Question Choice
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Question Choice entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="questionChoiceBeanExampleQuestion" value="Question:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{questionBean.converter}" id="questionChoiceBeanExampleQuestion" value="#{questionChoiceBean.example.question}">
+								<f:selectItem/>
+								<f:selectItems value="#{questionBean.all}"/>
+							</h:selectOneMenu>
+							<h:message for="questionChoiceBeanExampleQuestion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="questionChoiceBeanExampleChoiceIndex" value="Choice Index:"/>
+						<h:panelGroup>
+							<h:inputText id="questionChoiceBeanExampleChoiceIndex" maxLength="2" value="#{questionChoiceBean.example.choiceIndex}"/>
+							<h:message for="questionChoiceBeanExampleChoiceIndex" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="questionChoiceBeanExampleChoiceText" value="Choice Text:"/>
+						<h:panelGroup>
+							<h:inputText id="questionChoiceBeanExampleChoiceText" maxLength="225" value="#{questionChoiceBean.example.choiceText}"/>
+							<h:message for="questionChoiceBeanExampleChoiceText" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action="#{questionChoiceBean.search}" styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action="#{questionChoiceBean.create}" styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="questionChoiceBeanPageItems" styleClass="data-table" value="#{questionChoiceBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Choice Index"/>
+					</f:facet>
+					<h:link outcome="/questionChoice/view">
+						<f:param name="id" value="#{_item.idQuestionChoice}"/>
+						<h:outputText id="itemChoiceIndex" value="#{_item.choiceIndex}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Choice Text"/>
+					</f:facet>
+					<h:link outcome="/questionChoice/view">
+						<f:param name="id" value="#{_item.idQuestionChoice}"/>
+						<h:outputText id="itemChoiceText" value="#{_item.choiceText}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value="#{questionChoiceBean}"/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
