@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:dataTable value="#{supplierListForm.list}" var="row"
+			styleClass="products" columnClasses="odd,even">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="editColumn" style="font-weight: bold" />
+				</f:facet>
+				<h:selectBooleanCheckbox value="#{row.editable}" onclick="submit()" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="SupplierID" style="font-weight: bold" />
+				</f:facet>
+				<h:outputText value="#{row.supplier.supplierId}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="SupplierName" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.supplierName}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.supplierName}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ContactName" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.contactName}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.contactName}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ContactTitle" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.contactTitle}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.contactTitle}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Address" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.address}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.address}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="City" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.city}" rendered="#{row.editable}"
+					size="10" />
+				<h:outputText value="#{row.supplier.city}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="PostalCode" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.postalCode}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.postalCode}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="StateOrProvince" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.stateOrProvince}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.stateOrProvince}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Country" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.country}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.country}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="PhoneNumber" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.phoneNumber}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.phoneNumber}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="FaxNumber" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.faxNumber}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.faxNumber}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="PaymentTerms" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.paymentTerms}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.paymentTerms}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="EmailAddress" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.emailAddress}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.emailAddress}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Notes" style="font-weight: bold" />
+				</f:facet>
+				<h:inputText value="#{row.supplier.notes}"
+					rendered="#{row.editable}" size="10" />
+				<h:outputText value="#{row.supplier.notes}"
+					rendered="#{not row.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Delete" style="font-weight: bold" />
+				</f:facet>
+				<h:commandButton value="Delete"
+					action="#{supplierListForm.deleteRow(row)}" />
+			</h:column>
+		</h:dataTable>
+		<br />
+		<h:commandButton value="Add" action="#{supplierListForm.add}" />
+		<h:commandButton value="Save" action="#{supplierListForm.save}" />
+		<br />
+		<h:inputText value="#{supplierListForm.searchString}" />
+		<h:commandButton value="Search" action="#{supplierListForm.search}" />
+	</h:form>
+	<ui:debug />
+</h:body>
+</html>
